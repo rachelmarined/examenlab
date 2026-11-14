@@ -3,9 +3,13 @@ package Pokemon;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Equipo implements Serializable{
+
+    private static final long serialVersionUID = 1L;
+
     private List<Pokemon> integrantes;
     private final int MAX_INTEGRANTES = 6;
     public static final int MAX_COPIAS = 2;
@@ -46,7 +50,7 @@ public class Equipo implements Serializable{
     }
 
     public List<Pokemon> getPokemones(){
-        return integrantes;
+        return Collections.unmodifiableList(integrantes);
     }
 
     public int size(){

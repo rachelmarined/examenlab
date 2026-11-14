@@ -4,6 +4,9 @@ package Pokemon;
 import java.io.Serializable;
 
 public abstract class Pokemon implements Serializable, Cloneable{
+
+    private static final long serialVersionUID = 1L;
+
     protected String nombre;
     protected Tipo tipo;
     protected int nivel;
@@ -27,6 +30,9 @@ public abstract class Pokemon implements Serializable, Cloneable{
     }
     
     public void recibirDaño(int cantidad){
+        if (cantidad <= 0) {
+            return;
+        }
         this.psActuales -= cantidad;
         if (this.psActuales < 0) {
             this.psActuales = 0;
