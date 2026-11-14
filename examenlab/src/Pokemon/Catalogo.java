@@ -2,6 +2,7 @@
 package Pokemon;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Catalogo {
@@ -20,12 +21,12 @@ public class Catalogo {
     }
     
     public List<Pokemon> getPokemones() {
-        return pokemonesDisponibles;
+        return Collections.unmodifiableList(pokemonesDisponibles);
     }
     
     public void agregarPersonalizado(Pokemon p) {
         if (p!= null){
-            pokemonesDisponibles.add(p);
+            pokemonesDisponibles.add(p.clone());
         }
     }
 }

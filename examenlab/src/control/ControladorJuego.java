@@ -81,9 +81,6 @@ public class ControladorJuego {
     public int guardarEquipo() {
         asegurarEquipo();
         byte[] datos = GestorSerializacion.guardar(entrenador);
-        if (datos == null) {
-            throw new IllegalStateException("No se pudo guardar el equipo.");
-        }
         respaldo = datos;
         return datos.length;
     }
@@ -93,9 +90,6 @@ public class ControladorJuego {
             throw new IllegalStateException("Todavía no hay un equipo guardado.");
         }
         Entrenador guardado = GestorSerializacion.restaurar(respaldo);
-        if (guardado == null) {
-            throw new IllegalStateException("No se pudo restaurar el equipo guardado.");
-        }
         asegurarEntrenador();
         Equipo equipo = entrenador.getEquipo();
         while (equipo.size() > 0) {
