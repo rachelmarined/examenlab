@@ -8,7 +8,7 @@ public class PruebaModelo {
         Pokemon bulbasaur = cat.getPokemones().get(4);
 
         System.out.println("Fuego vs Planta: " + Tipo.FUEGO.getMultiplicador(Tipo.PLANTA) + " (esperado 2.0)");
-        System.out.println("Planta vs Electrico: " + Tipo.PLANTA.getMultiplicador(Tipo.ELECTRICO) + " (esperado 0.5)");
+        System.out.println("Planta vs Electrico: " + Tipo.PLANTA.getMultiplicador(Tipo.ELECTRICO) + " (esperado 1.0)");
 
         Pokemon defensor = new PokemonPlanta("Prueba", 100, 10, 10, 5);
         System.out.println("Daño ejemplo: " + charmander.calcularDaño(20, defensor) + " (esperado 68)");

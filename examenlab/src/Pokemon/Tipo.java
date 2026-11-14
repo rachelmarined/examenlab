@@ -8,10 +8,10 @@ public enum Tipo {
     ELECTRICO("Eléctrico");
     
     private static final double[][] TABLA = {
-        /* fuego     */ {0.5, 0.5, 2.0, 1.0},
-        /* agua      */ {2.0, 0.5, 0.5, 1.0},
-        /* planta    */ {0.5, 2.0, 0.5, 0.5},
-        /* electrico */ {1.0, 2.0, 0.5, 0.5}
+        {0.5, 0.5, 2.0, 1.0},
+        {2.0, 0.5, 0.5, 1.0},
+        {0.5, 2.0, 0.5, 1.0},
+        {1.0, 2.0, 0.5, 0.5}
     };
 
     private final String texto;
