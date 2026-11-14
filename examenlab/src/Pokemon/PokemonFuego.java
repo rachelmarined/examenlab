@@ -1,7 +1,7 @@
 
-package examenlab.Pokemon;
+package Pokemon;
 
-import examenlab.Pokemon.Pokemon;
+import Pokemon.Pokemon;
 
 public class PokemonFuego extends Pokemon{
     public PokemonFuego(String nombre, int ps, int ataque, int defensa, int velocidad){

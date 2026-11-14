@@ -1,5 +1,5 @@
 
-package examenlab.Pokemon;
+package Pokemon;
 
 public interface Movimiento{
     void ejecutar(Pokemon atacante, Pokemon defensor);

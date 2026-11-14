@@ -1,5 +1,5 @@
 
-package examenlab.Pokemon;
+package Pokemon;
 
 public enum Tipo {
     FUEGO, AGUA, PLANTA, ELECTRICO;
@@ -15,7 +15,7 @@ public enum Tipo {
                 if (defensor == FUEGO) return 2.0;
                 if (defensor == AGUA) return 0.5;
                 if (defensor == PLANTA) return 0.5;
-                return 1.0; // Eléctrico
+                return 1.0;
             case PLANTA:
                 if (defensor == FUEGO) return 0.5;
                 if (defensor == AGUA) return 2.0;

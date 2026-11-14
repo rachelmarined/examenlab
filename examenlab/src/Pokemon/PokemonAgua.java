@@ -1,5 +1,5 @@
 
-package examenlab.Pokemon;
+package Pokemon;
 
 public class PokemonAgua extends Pokemon{
     public PokemonAgua(String nombre, int ps, int ataque, int defensa, int velocidad) {
