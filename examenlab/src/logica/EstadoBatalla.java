@@ -1,5 +1,9 @@
 package logica;
 
+/**
+ *
+ * @author XPS 13
+ */
 public enum EstadoBatalla {
 
     PREPARACION("Preparando la batalla"),

@@ -1,5 +1,9 @@
 package logica;
 
+/**
+ *
+ * @author XPS 13
+ */
 public final class ReglasBatalla {
 
     public static final int MAX_RONDAS = 50;
