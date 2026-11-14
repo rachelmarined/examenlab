@@ -93,7 +93,7 @@ public class PanelResultado extends JPanel {
             case VICTORIA:
                 etiquetaTitulo.setText("¡Victoria, " + batalla.getNombreJugador() + "!");
                 etiquetaTitulo.setForeground(Estilo.EXITO);
-                etiquetaSubtitulo.setText("Dejaste al rival sin Pokémon en pie.");
+                etiquetaSubtitulo.setText("Le ganaste la batalla a " + batalla.getNombreRival() + ".");
                 break;
             case DERROTA:
                 etiquetaTitulo.setText("Derrota de " + batalla.getNombreJugador());

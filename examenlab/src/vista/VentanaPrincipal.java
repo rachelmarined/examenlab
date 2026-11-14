@@ -180,7 +180,8 @@ public class VentanaPrincipal extends JFrame {
         int psOriginalAntes = original.getPsActuales();
         copia.recibirDaño(30);
 
-        String mensaje = "Se clonó a " + original.getNombre() + " (copia profunda).\n\n"
+        String mensaje = "Se clonó a " + original.getNombre() + " con clone().\n"
+                + "No hace falta copia profunda porque Pokemon no tiene listas ni objetos mutables.\n\n"
                 + "Original → PS: " + original.getPsActuales() + "/" + original.getPsMax() + "\n"
                 + "Copia → PS: " + copia.getPsActuales() + "/" + copia.getPsMax() + "\n\n"
                 + "Los PS del original siguen en " + psOriginalAntes
