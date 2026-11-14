@@ -1,8 +1,12 @@
 package logica;
 
+import Pokemon.AtaqueBasico;
 import Pokemon.Catalogo;
 import Pokemon.Entrenador;
+import Pokemon.HabilidadEspecial;
+import Pokemon.Movimiento;
 import Pokemon.Pokemon;
+import Pokemon.Recuperar;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,6 +19,10 @@ import java.util.Random;
 public class Batalla {
 
     public static final String NOMBRE_RIVAL = "Rival CPU";
+
+    private final Movimiento ataqueBasico = new AtaqueBasico();
+    private final Movimiento habilidadEspecial = new HabilidadEspecial();
+    private final Movimiento recuperacion = new Recuperar();
 
     private final String nombreJugador;
     private final List<Pokemon> equipoJugador;
@@ -259,17 +267,16 @@ public class Batalla {
 
     private void atacar(Pokemon actor, Pokemon objetivo, boolean esJugador) {
         int psAntes = objetivo.getPsActuales();
-        int danio = actor.calcularDaño(ReglasBatalla.POTENCIA_ATAQUE_BASICO, objetivo);
-        objetivo.recibirDaño(danio);
-        mensajes.add(etiqueta(actor, esJugador) + " usa " + AccionBatalla.ATACAR.getTexto() + ".");
+        ataqueBasico.ejecutar(actor, objetivo);
+        mensajes.add(etiqueta(actor, esJugador) + " usa " + ataqueBasico.getNombre() + ".");
         informarGolpe(actor, objetivo, !esJugador, psAntes);
     }
 
     private void usarHabilidad(Pokemon actor, Pokemon objetivo, boolean esJugador) {
         int psObjetivoAntes = objetivo.getPsActuales();
         int psActorAntes = actor.getPsActuales();
-        actor.usarHabilidadEspecial(objetivo);
-        mensajes.add(etiqueta(actor, esJugador) + " usa su habilidad especial.");
+        habilidadEspecial.ejecutar(actor, objetivo);
+        mensajes.add(etiqueta(actor, esJugador) + " usa " + actor.getNombreHabilidad() + ".");
         informarGolpe(actor, objetivo, !esJugador, psObjetivoAntes);
         int curados = actor.getPsActuales() - psActorAntes;
         if (curados > 0) {
@@ -280,9 +287,9 @@ public class Batalla {
 
     private void recuperar(Pokemon actor, boolean esJugador) {
         int psAntes = actor.getPsActuales();
-        actor.recuperar();
+        recuperacion.ejecutar(actor, null);
         int curados = actor.getPsActuales() - psAntes;
-        mensajes.add(etiqueta(actor, esJugador) + " usa Recuperar y gana " + curados + " PS ("
+        mensajes.add(etiqueta(actor, esJugador) + " usa " + recuperacion.getNombre() + " y gana " + curados + " PS ("
                 + actor.getPsActuales() + "/" + actor.getPsMax() + ").");
     }
 
