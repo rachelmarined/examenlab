@@ -10,8 +10,11 @@ public class PokemonPlanta extends Pokemon{
     public void usarHabilidadEspecial(Pokemon defensor){
         if(puedeUsarHabilidad()){
             int daño = calcularDaño(18, defensor);
+            int psAntes = defensor.getPsActuales();
             defensor.recibirDaño(daño);
-            int absorcion = daño / 2;
+            int dañoReal = psAntes - defensor.getPsActuales();
+
+            int absorcion = dañoReal / 2;                        
             psActuales = Math.min(psMax, psActuales + absorcion);
             usosHabilidad--;
         }
