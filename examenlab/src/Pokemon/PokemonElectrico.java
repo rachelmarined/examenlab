@@ -8,14 +8,20 @@ public class PokemonElectrico extends Pokemon{
 
     @Override
     public void usarHabilidadEspecial(Pokemon defensor){
-        if(usosHabilidad > 0){
+        if(puedeUsarHabilidad()){
             int potencia = 17;
             int daño = calcularDaño(potencia, defensor);
             if(Math.random() < 0.25){
-                daño = (int) (daño * 1.5);
+                daño = (int) Math.round(daño * 1.5);
             }
             defensor.recibirDaño(daño);
             usosHabilidad--;
         }
     }
+    
+    @Override
+    public String getNombreHabilidad(){ return "Impactrueno"; }
+
+    @Override
+    public String getDescripcionHabilidad(){ return "Daño moderado (potencia 17) con 25% de golpe crítico (x1,5)"; }
 }

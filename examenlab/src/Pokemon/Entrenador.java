@@ -1,7 +1,9 @@
 
 package Pokemon;
 
-public class Entrenador{
+import java.io.Serializable;
+
+public class Entrenador implements Serializable{
     private String nombre;
     private Equipo equipo;
 

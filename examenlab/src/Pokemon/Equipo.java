@@ -8,17 +8,31 @@ import java.util.List;
 public class Equipo implements Serializable{
     private List<Pokemon> integrantes;
     private final int MAX_INTEGRANTES = 6;
+    public static final int MAX_COPIAS = 2;
 
     public Equipo() {
         integrantes = new ArrayList<>();
     }
+    
+    public boolean estaLleno() {
+        return integrantes.size() >= MAX_INTEGRANTES;
+    }
+    
+    public int contarCopias(Pokemon p) {
+        int cont = 0;
+        for (Pokemon pk : integrantes) {
+            if (pk.getNombre().equals(p.getNombre())) {
+                cont++;
+            }
+        }
+        return cont;
+    }
 
     public boolean agregar(Pokemon p){
-        if(integrantes.size() >= MAX_INTEGRANTES) return false;
+        if(p == null || estaLleno() || contarCopias(p) >= MAX_COPIAS){
+            return false;
+        }
         
-        long count = integrantes.stream().filter(pk -> pk.getNombre().equals(p.getNombre())).count();
-        if(count >= 2) return false;
-
         integrantes.add(p.clone());
         return true;
     }

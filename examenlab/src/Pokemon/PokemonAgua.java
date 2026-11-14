@@ -8,7 +8,7 @@ public class PokemonAgua extends Pokemon{
 
     @Override
     public void usarHabilidadEspecial(Pokemon defensor){
-        if(usosHabilidad > 0){
+        if(puedeUsarHabilidad()){
             int daño = calcularDaño(18, defensor);
             defensor.recibirDaño(daño);
             int curacion = (int) (psMax * 0.10);
@@ -16,4 +16,10 @@ public class PokemonAgua extends Pokemon{
             usosHabilidad--;
         }
     }
+    
+     @Override
+    public String getNombreHabilidad(){ return "Hidrobomba"; }
+
+    @Override
+    public String getDescripcionHabilidad(){ return "Daño moderado (potencia 18) y recupera 10% de PS máximos"; }
 }

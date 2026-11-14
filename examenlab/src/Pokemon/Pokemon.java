@@ -38,14 +38,19 @@ public abstract class Pokemon implements Serializable, Cloneable{
     }
 
     public void recuperar(){
-        if(usosRecuperacion > 0 && !estaDebilitado()){
+        if(puedeRecuperar()){
             int recuperacion = (int) Math.floor(psMax * 0.25);
-            psActuales += recuperacion;
-            if (psActuales > psMax) {
-                psActuales = psMax;
-            }
+            psActuales = Math.min(psMax, psActuales + recuperacion);
             usosRecuperacion--;
         }
+    }
+    
+     public boolean puedeRecuperar(){
+        return usosRecuperacion > 0 && psActuales < psMax && !estaDebilitado();
+    }
+     
+    public boolean puedeUsarHabilidad(){
+        return usosHabilidad > 0 && !estaDebilitado();
     }
     
     public int calcularDaño(int potencia, Pokemon defensor){
@@ -56,6 +61,8 @@ public abstract class Pokemon implements Serializable, Cloneable{
     }
     
     public abstract void usarHabilidadEspecial(Pokemon defensor);
+    public abstract String getNombreHabilidad();
+    public abstract String getDescripcionHabilidad();
     
     @Override
     public Pokemon clone(){
@@ -66,12 +73,23 @@ public abstract class Pokemon implements Serializable, Cloneable{
         }
     }
     
+    @Override
+    public String toString() {
+        return nombre + " (" + tipo + ") Nv." + nivel;
+    }
+    
     public String getNombre(){ return nombre; }
     public Tipo getTipo(){ return tipo; }
     public int getNivel(){ return nivel; }
     public int getPsMax(){ return psMax; }
     public int getPsActuales(){ return psActuales; }
-    public void setPsActuales(int psActuales){ this.psActuales = psActuales; }
+    
+    public void setPsActuales(int psActuales) {
+        if (psActuales < 0) psActuales = 0;
+        if (psActuales > psMax) psActuales = psMax;
+        this.psActuales = psActuales;
+    }
+    
     public int getAtaque(){ return ataque; }
     public int getDefensa(){ return defensa; }
     public int getVelocidad(){ return velocidad; }

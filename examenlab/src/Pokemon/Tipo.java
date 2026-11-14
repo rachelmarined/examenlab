@@ -2,32 +2,30 @@
 package Pokemon;
 
 public enum Tipo {
-    FUEGO, AGUA, PLANTA, ELECTRICO;
+    FUEGO("Fuego"),
+    AGUA("Agua"),
+    PLANTA("Planta"),
+    ELECTRICO("Eléctrico");
     
-    public double getMultiplicador(Tipo defensor){
-        switch (this){
-            case FUEGO:
-                if(defensor == FUEGO) return 0.5;
-                if(defensor == AGUA) return 0.5;
-                if (defensor == PLANTA) return 2.0;
-                return 1.0;
-            case AGUA:
-                if (defensor == FUEGO) return 2.0;
-                if (defensor == AGUA) return 0.5;
-                if (defensor == PLANTA) return 0.5;
-                return 1.0;
-            case PLANTA:
-                if (defensor == FUEGO) return 0.5;
-                if (defensor == AGUA) return 2.0;
-                if (defensor == PLANTA) return 0.5;
-            case ELECTRICO:
-                if (defensor == FUEGO) return 1.0;
-                if (defensor == AGUA) return 2.0;
-                if (defensor == PLANTA) return 0.5;
-                if (defensor == ELECTRICO) return 0.5;
-                return 1.0;
-            default:
-                return 1.0;
-        }
+    private static final double[][] TABLA = {
+        /* fuego     */ {0.5, 0.5, 2.0, 1.0},
+        /* agua      */ {2.0, 0.5, 0.5, 1.0},
+        /* planta    */ {0.5, 2.0, 0.5, 1.0},
+        /* electrico */ {1.0, 2.0, 0.5, 0.5}
+    };
+
+    private final String texto;
+
+    Tipo(String texto) {
+        this.texto = texto;
+    }
+
+    public double getMultiplicador(Tipo defensor) {
+        return TABLA[this.ordinal()][defensor.ordinal()];
+    }
+
+    @Override
+    public String toString() {
+        return texto;
     }
 }

@@ -8,7 +8,7 @@ public class PokemonPlanta extends Pokemon{
 
     @Override
     public void usarHabilidadEspecial(Pokemon defensor){
-        if(usosHabilidad > 0){
+        if(puedeUsarHabilidad()){
             int daño = calcularDaño(18, defensor);
             defensor.recibirDaño(daño);
             int absorcion = daño / 2;
@@ -16,4 +16,10 @@ public class PokemonPlanta extends Pokemon{
             usosHabilidad--;
         }
     }
+    
+    @Override
+    public String getNombreHabilidad(){ return "Absorber"; }
+
+    @Override
+    public String getDescripcionHabilidad(){ return "Daño moderado (potencia 18) y absorbe la mitad del daño como PS"; }
 }

@@ -24,6 +24,8 @@ public class Catalogo {
     }
     
     public void agregarPersonalizado(Pokemon p) {
-        pokemonesDisponibles.add(p);
+        if (p!= null){
+            pokemonesDisponibles.add(p);
+        }
     }
 }
